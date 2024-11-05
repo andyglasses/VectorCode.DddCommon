@@ -73,7 +73,29 @@ public abstract class Builder<TEntity, TDto>
   /// <param name="intValue">Integer error code payload</param>
   protected void AddValidationError(string key, string code, int intValue)
   {
-    _valdiationErrors.Add(KeyCodeExtensions.KeyCodeWithNumberDetail(key, code, intValue));
+    _valdiationErrors.Add(KeyCodeCreator.KeyCodeWithNumberDetail(key, code, intValue));
+  }
+
+  /// <summary>
+  /// Add a validation error with an integer description in the validaiton code
+  /// </summary>
+  /// <param name="key">Validation property key</param>
+  /// <param name="code">Validation error code</param>
+  /// <param name="stringValue">String error code payload</param>
+  protected void AddValidationError(string key, string code, string stringValue)
+  {
+    _valdiationErrors.Add(KeyCodeCreator.KeyCodeWithStringDetail(key, code, stringValue));
+  }
+
+  /// <summary>
+  /// Add a validation error with an integer description in the validaiton code
+  /// </summary>
+  /// <param name="key">Validation property key</param>
+  /// <param name="code">Validation error code</param>
+  /// <param name="stringValues">List of string error code payload values</param>
+  protected void AddValidationError(string key, string code, List<string> stringValues)
+  {
+    _valdiationErrors.Add(KeyCodeCreator.KeyCodeWithStringListDetail(key, code, stringValues));
   }
 
   /// <summary>

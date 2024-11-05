@@ -50,6 +50,14 @@ public partial class TestEntity
       {
         AddValidationError("Value", "ValueTooShort", 3);
       }
+      else if(_value == "List")
+      {
+        AddValidationError("Value", "ValueList", new List<string> { "value1", "value2" });
+      }
+      else if(_value == "String")
+      {
+        AddValidationError("Value", "ValueString", "value");
+      }
 
       if (_id < 1)
       {
