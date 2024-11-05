@@ -36,4 +36,24 @@ public abstract class BaseEntity<TIdentity, TDto>(TIdentity id)
   {
     return Id.GetHashCode();
   }
+
+  ///<inheritdoc/>
+  public static bool operator ==(BaseEntity<TIdentity, TDto> a, BaseEntity<TIdentity, TDto> b)
+  {
+    if(ReferenceEquals(a, null) && ReferenceEquals(b, null))
+    {
+      return true;
+    }
+    if(ReferenceEquals(a, null) || ReferenceEquals(b, null))
+    {
+      return false;
+    }
+    return a.Equals(b);
+  }
+
+  ///<inheritdoc/>
+  public static bool operator !=(BaseEntity<TIdentity, TDto> a, BaseEntity<TIdentity, TDto> b)
+  {
+    return !(a == b);
+  }
 }
