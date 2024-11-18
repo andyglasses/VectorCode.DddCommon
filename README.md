@@ -1,4 +1,4 @@
-# CodedVector.DddCommon
+# VectorCode.DddCommon
 Common models for domain driven design
 
 ## Basic terms

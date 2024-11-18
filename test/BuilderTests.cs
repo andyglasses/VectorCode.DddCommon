@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
 
-namespace CodedVector.DddCommon.Test;
+namespace VectorCode.DddCommon.Test;
 
 [TestFixture]
 public class BuilderTests

@@ -1,4 +1,4 @@
-﻿namespace CodedVector.DddCommon;
+﻿namespace VectorCode.DddCommon;
 
 /// <summary>
 /// Basic set of functions (CRUD) needed to interact with an entity repository

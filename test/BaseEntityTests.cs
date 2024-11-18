@@ -1,8 +1,8 @@
-﻿using CodedVector.DddCommon.Test.TestEntities;
+﻿using VectorCode.DddCommon.Test.TestEntities;
 using FluentAssertions;
 using System.Collections;
 
-namespace CodedVector.DddCommon.Test;
+namespace VectorCode.DddCommon.Test;
 
 [TestFixture]
 public class BaseEntityTests

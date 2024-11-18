@@ -1,6 +1,6 @@
-﻿using CodedVector.DddCommon.Test.TestEntities.Values;
+﻿using VectorCode.DddCommon.Test.TestEntities.Values;
 
-namespace CodedVector.DddCommon.Test.TestEntities;
+namespace VectorCode.DddCommon.Test.TestEntities;
 
 public partial class TestEntity
 {

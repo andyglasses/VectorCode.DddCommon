@@ -1,7 +1,7 @@
-﻿using CodedVector.Response;
+﻿using VectorCode.Common;
 using System.Collections.Immutable;
 
-namespace CodedVector.DddCommon;
+namespace VectorCode.DddCommon;
 
 /// <summary>
 /// Entity builder class
@@ -73,7 +73,7 @@ public abstract class Builder<TEntity, TDto>
   /// <param name="intValue">Integer error code payload</param>
   protected void AddValidationError(string key, string code, int intValue)
   {
-    _valdiationErrors.Add(KeyCodeCreator.KeyCodeWithNumberDetail(key, code, intValue));
+    _valdiationErrors.Add(KeyCode.Builder.KeyCodeWithNumberDetail(key, code, intValue));
   }
 
   /// <summary>
@@ -84,7 +84,7 @@ public abstract class Builder<TEntity, TDto>
   /// <param name="stringValue">String error code payload</param>
   protected void AddValidationError(string key, string code, string stringValue)
   {
-    _valdiationErrors.Add(KeyCodeCreator.KeyCodeWithStringDetail(key, code, stringValue));
+    _valdiationErrors.Add(KeyCode.Builder.KeyCodeWithStringDetail(key, code, stringValue));
   }
 
   /// <summary>
@@ -95,7 +95,7 @@ public abstract class Builder<TEntity, TDto>
   /// <param name="stringValues">List of string error code payload values</param>
   protected void AddValidationError(string key, string code, List<string> stringValues)
   {
-    _valdiationErrors.Add(KeyCodeCreator.KeyCodeWithStringListDetail(key, code, stringValues));
+    _valdiationErrors.Add(KeyCode.Builder.KeyCodeWithStringListDetail(key, code, stringValues));
   }
 
   /// <summary>

@@ -1,4 +1,4 @@
-﻿namespace CodedVector.DddCommon.Test.TestEntities.Values;
+﻿namespace VectorCode.DddCommon.Test.TestEntities.Values;
 
 public partial record ChildValue
 {

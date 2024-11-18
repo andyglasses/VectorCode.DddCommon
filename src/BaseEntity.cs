@@ -1,4 +1,4 @@
-﻿namespace CodedVector.DddCommon;
+﻿namespace VectorCode.DddCommon;
 
 /// <summary>
 /// Base Entity class

@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
-namespace CodedVector.DddCommon.Test.TestEntities.Values;
+namespace VectorCode.DddCommon.Test.TestEntities.Values;
 
 [ExcludeFromCodeCoverage]
 public partial record ChildValue(string Value)
