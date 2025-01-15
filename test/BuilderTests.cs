@@ -1,6 +1,4 @@
-﻿using FluentAssertions;
-
-namespace VectorCode.DddCommon.Test;
+﻿namespace VectorCode.DddCommon.Test;
 
 [TestFixture]
 public class BuilderTests
@@ -20,9 +18,9 @@ public class BuilderTests
     var act = () => builder.Create();
 
     // Assert
-    result.Should().BeTrue();
-    errors.Should().BeEmpty();
-    act.Should().NotThrow();
+    Assert.That(result, Is.True);
+    Assert.That(errors, Is.Empty);
+    Assert.That(act, Throws.Nothing);
 
   }
 
@@ -40,10 +38,10 @@ public class BuilderTests
     var act = () => builder.Create();
 
     // Assert
-    result.Should().BeFalse();
-    errors.Count.Should().Be(1);
-    errors[0].Key.Should().Be("Id");
-    act.Should().Throw<InvalidOperationException>();
+    Assert.That(result, Is.False);
+    Assert.That(errors, Has.Exactly(1).Items);
+    Assert.That(errors[0].Key, Is.EqualTo("Id"));
+    Assert.That(act, Throws.InvalidOperationException);
   }
 
   [Test]
@@ -61,14 +59,14 @@ public class BuilderTests
     var act = () => builder.Create();
 
     // Assert
-    result.Should().BeFalse();
-    errors.Count.Should().Be(1);
-    errors[0].Key.Should().Be("SubValue.Value");
-    act.Should().Throw<InvalidOperationException>();
+    Assert.That(result, Is.False);
+    Assert.That(errors, Has.Exactly(1).Items);
+    Assert.That(errors[0].Key, Is.EqualTo("SubValue.Value"));
+    Assert.That(act, Throws.InvalidOperationException);
   }
 
   [Test]
-  public void Create_WhenHasStringValidationationErrors_CreatesCorrectCode()
+  public void Create_WhenHasStringValidationErrors_CreatesCorrectCode()
   {
     // Arrange
     var builder = new TestEntities.TestEntity.Builder();
@@ -81,15 +79,15 @@ public class BuilderTests
     var act = () => builder.Create();
 
     // Assert
-    result.Should().BeFalse();
-    errors.Count.Should().Be(1);
-    errors[0].Key.Should().Be("Value");
-    errors[0].Code.Should().Be("ValueString:value");
-    act.Should().Throw<InvalidOperationException>();
+    Assert.That(result, Is.False);
+    Assert.That(errors, Has.Exactly(1).Items);
+    Assert.That(errors[0].Key, Is.EqualTo("Value"));
+    Assert.That(errors[0].Code, Is.EqualTo("ValueString:value"));
+    Assert.That(act, Throws.InvalidOperationException);
   }
 
   [Test]
-  public void Create_WhenHasStringListValidationationErrors_CreatesCorrectCode()
+  public void Create_WhenHasStringListValidationErrors_CreatesCorrectCode()
   {
     // Arrange
     var builder = new TestEntities.TestEntity.Builder();
@@ -102,10 +100,10 @@ public class BuilderTests
     var act = () => builder.Create();
 
     // Assert
-    result.Should().BeFalse();
-    errors.Count.Should().Be(1);
-    errors[0].Key.Should().Be("Value");
-    errors[0].Code.Should().Be("ValueList:value1;value2");
-    act.Should().Throw<InvalidOperationException>();
+    Assert.That(result, Is.False);
+    Assert.That(errors, Has.Exactly(1).Items);
+    Assert.That(errors[0].Key, Is.EqualTo("Value"));
+    Assert.That(errors[0].Code, Is.EqualTo("ValueList:value1;value2"));
+    Assert.That(act, Throws.InvalidOperationException);
   }
 }

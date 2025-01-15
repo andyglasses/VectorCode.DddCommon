@@ -1,5 +1,4 @@
 ﻿using VectorCode.DddCommon.Test.TestEntities;
-using FluentAssertions;
 using System.Collections;
 
 namespace VectorCode.DddCommon.Test;
@@ -18,7 +17,7 @@ public class BaseEntityTests
     var result = entity1.Equals(entity2);
 
     // Assert
-    result.Should().BeTrue();
+    Assert.That(result, Is.True);
   }
 
   [Test]
@@ -32,7 +31,7 @@ public class BaseEntityTests
     var result = entity1.Equals(entity2);
 
     // Assert
-    result.Should().BeTrue();
+    Assert.That(result, Is.True);
   }
 
   [Test]
@@ -46,7 +45,7 @@ public class BaseEntityTests
     var result = entity1.Equals(entity2);
 
     // Assert
-    result.Should().BeFalse();
+    Assert.That(result, Is.False);
   }
 
   [Test]
@@ -59,7 +58,7 @@ public class BaseEntityTests
     var result = entity1.Equals(null);
 
     // Assert
-    result.Should().BeFalse();
+    Assert.That(result, Is.False);
   }
 
   [Test]
@@ -74,7 +73,7 @@ public class BaseEntityTests
     var result2 = entity2.GetHashCode();
 
     // Assert
-    result1.Should().Be(result2);
+    Assert.That(result1, Is.EqualTo(result2));
   }
 
   [Test]
@@ -87,8 +86,8 @@ public class BaseEntityTests
     var result = entity.ToDto();
 
     // Assert
-    result.Id.Should().Be(1);
-    result.Value.Should().Be("Test");
+    Assert.That(result.Id, Is.EqualTo(1));
+    Assert.That(result.Value, Is.EqualTo("Test"));
   }
 
   [Test]
@@ -102,8 +101,8 @@ public class BaseEntityTests
     var resultNeq = entity1 != entity2;
 
     // Assert
-    resultEq.Should().Be(equalsExpected);
-    resultNeq.Should().Be(!equalsExpected);
+    Assert.That(resultEq, Is.EqualTo(equalsExpected));
+    Assert.That(resultNeq, Is.EqualTo(!equalsExpected));
   }
 
   private static IEnumerable EqualsOperator_TestCases

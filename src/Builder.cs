@@ -59,14 +59,14 @@ public abstract class Builder<TEntity, TDto>
   /// Add a validation error
   /// </summary>
   /// <param name="key">Validation property key</param>
-  /// <param name="code">Valdiation error code</param>
+  /// <param name="code">Validation error code</param>
   protected void AddValidationError(string key, string code)
   {
     _valdiationErrors.Add(new KeyCode(key, code));
   }
 
   /// <summary>
-  /// Add a validation error with an integer description in the validaiton code
+  /// Add a validation error with an integer description in the validation code
   /// </summary>
   /// <param name="key">Validation property key</param>
   /// <param name="code">Validation error code</param>
@@ -77,7 +77,7 @@ public abstract class Builder<TEntity, TDto>
   }
 
   /// <summary>
-  /// Add a validation error with an integer description in the validaiton code
+  /// Add a validation error with an integer description in the validation code
   /// </summary>
   /// <param name="key">Validation property key</param>
   /// <param name="code">Validation error code</param>
@@ -88,7 +88,7 @@ public abstract class Builder<TEntity, TDto>
   }
 
   /// <summary>
-  /// Add a validation error with an integer description in the validaiton code
+  /// Add a validation error with an integer description in the validation code
   /// </summary>
   /// <param name="key">Validation property key</param>
   /// <param name="code">Validation error code</param>
@@ -101,7 +101,7 @@ public abstract class Builder<TEntity, TDto>
   /// <summary>
   /// Add a validation KeyCode
   /// </summary>
-  /// <param name="error">The error keycode</param>
+  /// <param name="error">The error key code</param>
   protected void AddValidationError(KeyCode? error)
   {
     if (error != null)
