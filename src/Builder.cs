@@ -15,7 +15,7 @@ public abstract class Builder<TEntity, TDto>
   /// <summary>
   /// Current Validation errors
   /// </summary>
-  public IImmutableList<KeyCode> ValidationErrors => _valdiationErrors.ToImmutableList();
+  public ValidationErrorCollection ValidationErrors => new ValidationErrorCollection(_valdiationErrors);
 
   /// <summary>
   /// Create the entity, will throw an error if there are validation errors
