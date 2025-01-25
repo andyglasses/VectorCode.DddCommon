@@ -4,7 +4,7 @@ using System.Collections;
 namespace VectorCode.DddCommon.Test;
 
 [TestFixture]
-public class BaseEntityTests
+public class EntityTests
 {
   [Test]
   public void Equals_WhenSameTypeAndId_ReturnsTrue()

@@ -1,13 +1,12 @@
 ﻿namespace VectorCode.DddCommon;
 
 /// <summary>
-/// Basic set of functions (CRUD) needed to interact with an entity repository which supports versioning / timestamps / etags for concurrency
+/// Basic set of functions (CRUD) needed to interact with an entity repository
 /// </summary>
 /// <typeparam name="TEntity">Entity Type</typeparam>
 /// <typeparam name="TIdentity">Entity Id type</typeparam>
 /// <typeparam name="TDto">Entity dto type</typeparam>
-/// <typeparam name="TVersion">Version type</typeparam>
-public interface IBaseVersionedEntityRepository<TEntity, TIdentity, TDto, TVersion> where TEntity : BaseEntity<TIdentity, TDto>
+public interface IEntityRepository<TEntity, TIdentity, TDto> where TEntity : Entity<TIdentity, TDto>
   where TIdentity : notnull
 {
   /// <summary>
@@ -16,7 +15,7 @@ public interface IBaseVersionedEntityRepository<TEntity, TIdentity, TDto, TVersi
   /// <param name="id">Entities identity value</param>
   /// <param name="cancellationToken">Cancellation token for async actions</param>
   /// <returns></returns>
-  Task<(TDto? Dto, TVersion Version)> FetchById(TIdentity id, CancellationToken cancellationToken);
+  Task<TEntity?> FetchById(TIdentity id, CancellationToken cancellationToken);
 
   /// <summary>
   /// Inserts a new entity into the repository, returning the new entity's id.  
@@ -31,17 +30,15 @@ public interface IBaseVersionedEntityRepository<TEntity, TIdentity, TDto, TVersi
   /// Updates an existing entity in the repository
   /// </summary>
   /// <param name="entity">The entity to update</param>
-  /// <param name="version">The version of the entity</param>
   /// <param name="cancellationToken">Cancellation token for async actions</param>
   /// <returns></returns>
-  Task Update(TEntity entity, TVersion version, CancellationToken cancellationToken);
+  Task Update(TEntity entity, CancellationToken cancellationToken);
 
   /// <summary>
-  /// Deletes an entity from the repository. 
+  /// Deletes an entity from the repository.  This will not throw an error if the entity does not exist.
   /// </summary>
   /// <param name="id">Entity's identifier value</param>
-  /// <param name="version">The version of the entity</param>
   /// <param name="cancellationToken">Cancellation token for async actions</param>
   /// <returns></returns>
-  Task Delete(TIdentity id, TVersion version, CancellationToken cancellationToken);
+  Task Delete(TIdentity id, CancellationToken cancellationToken);
 }

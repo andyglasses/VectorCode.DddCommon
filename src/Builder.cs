@@ -1,5 +1,4 @@
 ﻿using VectorCode.Common;
-using System.Collections.Immutable;
 
 namespace VectorCode.DddCommon;
 
@@ -54,6 +53,14 @@ public abstract class Builder<TEntity, TDto>
   /// </summary>
   /// <returns></returns>
   protected abstract TEntity Build();
+
+  /// <summary>
+  /// Override this method set values that are needed to indicate to the builder that this is not a new but existing entity being created (e.g. from a data store)
+  /// </summary>
+  public virtual void CreatedFromExisting()
+  {
+
+  }
 
   /// <summary>
   /// Add a validation error

@@ -1,12 +1,12 @@
 ﻿namespace VectorCode.DddCommon;
 
 /// <summary>
-/// Base Entity class
+/// Entity class
 /// </summary>
 /// <typeparam name="TIdentity">Identity field type</typeparam>
 /// <typeparam name="TDto">Dto type</typeparam>
 /// <param name="id">Identifier value</param>
-public abstract class BaseEntity<TIdentity, TDto>(TIdentity id)
+public abstract class Entity<TIdentity, TDto>(TIdentity id)
   where TIdentity : notnull
 {
   /// <summary>
@@ -33,7 +33,7 @@ public abstract class BaseEntity<TIdentity, TDto>(TIdentity id)
       return false;
     }
 
-    var other = obj as BaseEntity<TIdentity, TDto>;
+    var other = obj as Entity<TIdentity, TDto>;
 
     if(other!.Id.Equals(default (TIdentity)))
     {
@@ -50,7 +50,7 @@ public abstract class BaseEntity<TIdentity, TDto>(TIdentity id)
   }
 
   ///<inheritdoc/>
-  public static bool operator ==(BaseEntity<TIdentity, TDto> a, BaseEntity<TIdentity, TDto> b)
+  public static bool operator ==(Entity<TIdentity, TDto> a, Entity<TIdentity, TDto> b)
   {
     if(ReferenceEquals(a, null) && ReferenceEquals(b, null))
     {
@@ -64,7 +64,7 @@ public abstract class BaseEntity<TIdentity, TDto>(TIdentity id)
   }
 
   ///<inheritdoc/>
-  public static bool operator !=(BaseEntity<TIdentity, TDto> a, BaseEntity<TIdentity, TDto> b)
+  public static bool operator !=(Entity<TIdentity, TDto> a, Entity<TIdentity, TDto> b)
   {
     return !(a == b);
   }

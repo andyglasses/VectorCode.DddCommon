@@ -4,7 +4,7 @@ using VectorCode.DddCommon.Test.TestEntities.Values;
 namespace VectorCode.DddCommon.Test.TestEntities;
 
 [ExcludeFromCodeCoverage]
-public partial class TestEntity : BaseEntity<int, TestEntity.Dto>
+public partial class TestEntity : Entity<int, TestEntity.Dto>
 {
   public string Value { get; }
   public ChildValue Child { get; }

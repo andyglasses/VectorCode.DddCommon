@@ -1,12 +1,13 @@
 ﻿namespace VectorCode.DddCommon;
 
 /// <summary>
-/// Basic set of functions (CRUD) needed to interact with an entity repository
+/// Basic set of functions (CRUD) needed to interact with an aggregate root repository which supports version-ing / timestamps / etags for concurrency
 /// </summary>
 /// <typeparam name="TEntity">Entity Type</typeparam>
 /// <typeparam name="TIdentity">Entity Id type</typeparam>
 /// <typeparam name="TDto">Entity dto type</typeparam>
-public interface IBaseEntityRepository<TEntity, TIdentity, TDto> where TEntity : BaseEntity<TIdentity, TDto>
+/// <typeparam name="TVersion">Version type</typeparam>
+public interface IAggregateRootRepository<TEntity, TIdentity, TDto, TVersion> where TEntity : AggregateRoot<TIdentity, TDto, TVersion>
   where TIdentity : notnull
 {
   /// <summary>
@@ -15,7 +16,7 @@ public interface IBaseEntityRepository<TEntity, TIdentity, TDto> where TEntity :
   /// <param name="id">Entities identity value</param>
   /// <param name="cancellationToken">Cancellation token for async actions</param>
   /// <returns></returns>
-  Task<TDto?> FetchById(TIdentity id, CancellationToken cancellationToken);
+  Task<TEntity?> FetchById(TIdentity id, CancellationToken cancellationToken);
 
   /// <summary>
   /// Inserts a new entity into the repository, returning the new entity's id.  
@@ -35,10 +36,10 @@ public interface IBaseEntityRepository<TEntity, TIdentity, TDto> where TEntity :
   Task Update(TEntity entity, CancellationToken cancellationToken);
 
   /// <summary>
-  /// Deletes an entity from the repository.  This will not throw an error if the entity does not exist.
+  /// Deletes an entity from the repository. 
   /// </summary>
-  /// <param name="id">Entity's identifier value</param>
+  /// <param name="entity">Entity's being deleted</param>
   /// <param name="cancellationToken">Cancellation token for async actions</param>
   /// <returns></returns>
-  Task Delete(TIdentity id, CancellationToken cancellationToken);
+  Task Delete(TEntity entity, CancellationToken cancellationToken);
 }
