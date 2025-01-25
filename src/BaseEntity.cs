@@ -28,13 +28,25 @@ public abstract class BaseEntity<TIdentity, TDto>(TIdentity id)
       return false;
     }
 
-    return Id.Equals(((BaseEntity<TIdentity, TDto>)obj).Id);
+    if(Id.Equals(default(TIdentity)))
+    {
+      return false;
+    }
+
+    var other = obj as BaseEntity<TIdentity, TDto>;
+
+    if(other!.Id.Equals(default (TIdentity)))
+    {
+      return false;
+    }
+
+    return Id.Equals(other.Id);
   }
 
   ///<inheritdoc/>
   public override int GetHashCode()
   {
-    return Id.GetHashCode();
+    return (GetType().ToString() + Id).GetHashCode();
   }
 
   ///<inheritdoc/>

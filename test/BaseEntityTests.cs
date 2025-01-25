@@ -125,6 +125,10 @@ public class BaseEntityTests
         null,
         null,
         true).SetName("Both null");
+      yield return new TestCaseData(
+        new TestEntity(0, "Test", new TestEntities.Values.ChildValue("child")),
+        new TestEntity(0, "Test", new TestEntities.Values.ChildValue("child")),
+        false).SetName("Both default Ids");
     }
   }
 }
