@@ -106,4 +106,21 @@ public class BuilderTests
     Assert.That(errors[0].Code, Is.EqualTo("ValueList:value1;value2"));
     Assert.That(act, Throws.InvalidOperationException);
   }
+
+  [Test]
+  public void Create_WhenExisting_IgnoresErrors()
+  {
+    // Arrange
+    var builder = new TestEntities.TestEntity.Builder();
+    builder.WithId(1)
+       .WithValue("")
+       .WithChild().WithValue("Hello");
+
+    // Act
+    builder.CreatedFromExisting();
+    var act = () => builder.Create();
+
+    // Assert
+    Assert.That(act, Throws.Nothing);
+  }
 }
