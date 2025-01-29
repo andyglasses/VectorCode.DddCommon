@@ -22,7 +22,7 @@ public abstract class Builder<TEntity, TDto>
   /// <returns>The built entity</returns>
   public TEntity Create()
   {
-    if (!_isCreatedFromExisting && !CanCreate())
+    if (!_markAsExisting && !CanCreate())
     {
       var ex = new InvalidOperationException("Cannot create entity with validation errors");
       ex.Data.Add("ValidationErrors", ValidationErrors);
@@ -59,12 +59,13 @@ public abstract class Builder<TEntity, TDto>
   /// is not a new but existing entity being created (e.g. from a data store)
   /// If not overwritten or called from the override method, the builder will assume this is an existing entity and ignore validation
   /// </summary>
-  public virtual void CreatedFromExisting()
+  public virtual Builder<TEntity, TDto> MarkAsExisting()
   {
-    _isCreatedFromExisting = true;
+    _markAsExisting = true;
+    return this;
   }
 
-  private bool _isCreatedFromExisting;
+  private bool _markAsExisting;
 
   /// <summary>
   /// Add a validation error

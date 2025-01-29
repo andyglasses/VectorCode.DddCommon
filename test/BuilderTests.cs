@@ -117,7 +117,7 @@ public class BuilderTests
        .WithChild().WithValue("Hello");
 
     // Act
-    builder.CreatedFromExisting();
+    builder.MarkAsExisting();
     var act = () => builder.Create();
 
     // Assert
